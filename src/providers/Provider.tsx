@@ -3,7 +3,6 @@
 import React from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
 
-import { ThemeProvider } from '@/providers/ThemeProvider';
 import { store } from '@/redux/store';
 
 type Props = {
@@ -12,18 +11,14 @@ type Props = {
 
 export const Provider = ({ children }: Props) => (
   <ReduxProvider store={store}>
-    <ThemeProvider>
-      {children}
-    </ThemeProvider>
+    {children}
   </ReduxProvider>
 );
 
 export const SsrProvider = ({ children }: Props) => {
   return (
     <ReduxProvider store={store}>
-      <ThemeProvider>
-        {children}
-      </ThemeProvider>
+      {children}
     </ReduxProvider>
   );
 };
