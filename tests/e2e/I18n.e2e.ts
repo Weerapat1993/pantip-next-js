@@ -13,7 +13,7 @@ test.describe('I18n', () => {
 
       await expect(page.getByText('Welcome to our About page')).toBeVisible();
 
-      await page.getByRole('combobox', { name: 'lang-switcher' }).selectOption({ label: 'FR' });
+      await page.getByRole('combobox', { name: 'lang-switcher' }).selectOption({ label: 'TH' });
 
       await expect(page.getByText('Bienvenue sur notre page À propos')).toBeVisible();
 
