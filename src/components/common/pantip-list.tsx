@@ -1,7 +1,7 @@
 import { CardContent } from '@/components/ui/card';
 
 type Props = {
-  title: string;
+  title: string | React.ReactNode;
   description?: string | React.ReactNode;
 };
 

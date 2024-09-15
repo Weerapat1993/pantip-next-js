@@ -13,3 +13,31 @@ export type Product = {
   created_at: string;
   updated_at: string;
 };
+
+export type Category = {
+  id: number;
+  is_pinned: boolean;
+  link_url: string;
+  name: string;
+  name_en: string;
+  room_icon_url: string;
+  slug: string;
+  description: string;
+};
+
+export type Pagination = {
+  pageSize: number;
+  current: number;
+  total: number;
+  page: number;
+  lastPage: number;
+};
+
+export type PaginationNextId = {
+  next_id: number;
+  ranking_time: number;
+};
+
+export type SuggestTopicPages = {
+  [key: string]: any[];
+};

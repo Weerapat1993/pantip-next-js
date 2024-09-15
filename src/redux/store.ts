@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 
-import productReducer from '@/redux/features/productSlice';
+import categoryReducer from '@/redux/features/categorySlice';
+import suggestTopicReducer from '@/redux/features/suggestTopicSlice';
 
 export const store = configureStore({
   reducer: {
-    productReducer,
+    suggestTopicReducer,
+    categoryReducer,
   },
   devTools: process.env.NODE_ENV !== 'production',
   middleware: getDefaultMiddleware =>

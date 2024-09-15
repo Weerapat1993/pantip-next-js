@@ -2,6 +2,7 @@ import { useTranslations } from 'next-intl';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 
 import { PantipItem, PantipList } from '@/components/common/pantip-list';
+import PantipSuggestTopic from '@/components/home/PantipSuggestTopic';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
@@ -22,6 +23,7 @@ export default function Index(props: { params: { locale: string } }) {
 
   return (
     <>
+      <PantipSuggestTopic type="room" />
       <Card className="my-4">
         <CardHeader className="bg-secondary">
           <CardTitle className="text-yellow-700 dark:text-yellow-400">{t('title')}</CardTitle>
