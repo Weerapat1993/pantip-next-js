@@ -5,7 +5,7 @@ import { getSuggestTopicListByType, setPage } from '@/redux/features/suggestTopi
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 
 type Props = {
-  key: 'room';
+  key: 'room' | 'tag';
 };
 
 export const usePantipSuggestTopic = ({ key }: Props) => {
@@ -17,21 +17,6 @@ export const usePantipSuggestTopic = ({ key }: Props) => {
   const page = useAppSelector(state => state.suggestTopicReducer.keys?.[key]?.pagination.next_id);
   const dispatch = useAppDispatch();
   const prevPage = usePrevious(page);
-  // const allPages = useMemo(() => {
-  //   let list: any[] = [];
-  //   const pageState = pagination?.next_id || 1;
-  //   for (let i = 0; i < pageState; i++) {
-  //     const listData = pages?.[i + 1] || [];
-  //     // console.log(listData);
-  //     if (listData.length) {
-  //       list = [
-  //         ...list,
-  //         ...listData,
-  //       ];
-  //     }
-  //   }
-  //   return list;
-  // }, [pages]);
   const isPageHasChange = prevPage !== page && prevPage !== undefined;
   const isNotCreatePage = !pages?.[page || 1];
 

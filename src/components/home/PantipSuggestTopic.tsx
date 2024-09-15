@@ -10,7 +10,7 @@ import { PantipItem, PantipList } from '../common/pantip-list';
 import { Button } from '../ui/button';
 
 type Props = {
-  type: 'room';
+  type: 'room' | 'tag';
 };
 
 const PantipSuggestTopic: React.FC<Props> = ({ type }) => {
@@ -24,13 +24,26 @@ const PantipSuggestTopic: React.FC<Props> = ({ type }) => {
     });
   };
 
+  let keyId = 'id';
+  let keyName = 'name';
+  switch (type) {
+    case 'room':
+      keyId = 'room_id';
+      keyName = 'room_name_th';
+      break;
+    case 'tag':
+      keyId = 'tag_id';
+      keyName = 'tag_name';
+      break;
+  }
+
   return (
     <div>
       <Loading isLoading={isLoading}>
         {list.map((item: any) => (
           <PantipCard
-            key={item.room_id}
-            title={item.room_name_th}
+            key={item[keyId]}
+            title={item[keyName]}
           >
             <PantipList>
               {item.topics.map((topic: any) => (
@@ -68,7 +81,7 @@ const PantipSuggestTopic: React.FC<Props> = ({ type }) => {
             </PantipList>
           </PantipCard>
         ))}
-        {isFetch
+        {isFetch && type !== 'tag'
           ? (
               <div className="text-center">
                 <Button onClick={seeMore} disabled={isLoading}>See more</Button>

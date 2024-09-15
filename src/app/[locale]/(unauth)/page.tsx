@@ -38,7 +38,7 @@ export default function Index(props: { params: { locale: string } }) {
       <NavbarMenu />
       <div className="flex flex-row-reverse flex-wrap gap-4 lg:flex-nowrap">
         <div className="flex w-full flex-none flex-col lg:w-80">
-          Tag
+          <PantipSuggestTopic type="tag" />
         </div>
         <div className="flex w-full flex-auto flex-col">
           <PantipSuggestTopic type="room" />

@@ -42,6 +42,7 @@ const defaultReduxData = {
 const initialState = {
   keys: {
     room: defaultReduxData,
+    tag: defaultReduxData,
   },
 } as SuggestTopicState;
 
