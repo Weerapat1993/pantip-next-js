@@ -17,7 +17,6 @@ export const Navbar: React.FC = () => {
   const navItems = [
     { label: t('home_link'), href: '/' },
     { label: t('about_link'), href: '/about' },
-    { label: t('counter_link'), href: '/dashboard' },
   ];
 
   useEffect(() => {

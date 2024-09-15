@@ -25,6 +25,14 @@ export type Category = {
   description: string;
 };
 
+export type Announce = {
+  announce_id: number;
+  category_name: string;
+  created_time: string;
+  display_message: string;
+  type: string;
+};
+
 export type Pagination = {
   pageSize: number;
   current: number;

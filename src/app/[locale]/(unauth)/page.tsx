@@ -1,9 +1,10 @@
 import { useTranslations } from 'next-intl';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 
-import { PantipItem, PantipList } from '@/components/common/pantip-list';
+import { LayoutBreadcrumb } from '@/components/common/layout-breadcrumb';
+import PantipAnnounce from '@/components/common/pantip-announce';
 import PantipSuggestTopic from '@/components/home/PantipSuggestTopic';
-import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import NavbarMenu from '@/components/navbar/NavbarMenu';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
   const t = await getTranslations({
@@ -19,43 +20,31 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 
 export default function Index(props: { params: { locale: string } }) {
   unstable_setRequestLocale(props.params.locale);
-  const t = useTranslations('Highlight');
+  const t = useTranslations('RootLayout');
+  const breadcrumb = [
+    {
+      key: 1,
+      title: t('home_link'),
+      href: '/',
+      isLast: true,
+    },
+  ];
 
   return (
-    <>
-      <PantipSuggestTopic type="room" />
-      <Card className="my-4">
-        <CardHeader className="bg-secondary">
-          <CardTitle className="text-yellow-700 dark:text-yellow-400">{t('title')}</CardTitle>
-        </CardHeader>
-        <PantipList>
-          <PantipItem
-            title="คนเราคบกัน จำเป็นต้องมี Love language ที่เท่ากันมั้ยคะ"
-            description={(
-              <div className="flex flex-wrap gap-2">
-                <span className="cursor-pointer text-xs text-secondary-foreground">ความรักต่างวัย</span>
-                <span className="cursor-pointer text-xs text-secondary-foreground">ความรักต่างวัย</span>
-                <span className="cursor-pointer text-xs text-secondary-foreground">ความรักต่างวัย</span>
-              </div>
-            )}
-          />
-          <PantipItem
-            title="Card Content"
-          />
-          <PantipItem
-            title="Card Content"
-          />
-          <PantipItem
-            title="Card Content"
-          />
-        </PantipList>
-      </Card>
-      <Card className="my-4">
-        <CardHeader className="bg-secondary">
-          <CardTitle className="text-yellow-700 dark:text-yellow-400">Pantip Realtime</CardTitle>
-          <CardDescription>กระทู้ที่มีคนอ่านมาในขณะนี้</CardDescription>
-        </CardHeader>
-      </Card>
-    </>
+    <div>
+      <LayoutBreadcrumb list={breadcrumb} />
+      <h2 className="mb-4 text-2xl font-bold">{t('home_link')}</h2>
+      <PantipAnnounce />
+      <NavbarMenu />
+      <div className="flex flex-row-reverse flex-wrap gap-4 lg:flex-nowrap">
+        <div className="flex w-full flex-none flex-col lg:w-80">
+          Tag
+        </div>
+        <div className="flex w-full flex-auto flex-col">
+          <PantipSuggestTopic type="room" />
+        </div>
+      </div>
+
+    </div>
   );
 }

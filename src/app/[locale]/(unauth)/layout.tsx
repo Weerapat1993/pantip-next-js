@@ -1,7 +1,6 @@
 import { unstable_setRequestLocale } from 'next-intl/server';
 
 import { Navbar } from '@/components/navbar/navbar';
-import NavbarMenu from '@/components/navbar/NavbarMenu';
 
 type Props = {
   children: React.ReactNode;
@@ -19,8 +18,7 @@ const Layout: React.FC<Props> = (props) => {
     <div className="min-h-screen bg-white dark:bg-[#353157]">
       <Navbar />
       <main>
-        <div className="container mx-auto px-4 py-6">
-          <NavbarMenu />
+        <div className="container mx-auto px-4 pb-6">
           {children}
         </div>
       </main>

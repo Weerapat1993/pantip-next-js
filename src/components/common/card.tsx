@@ -9,10 +9,14 @@ type Props = {
 const PantipCard: React.FC<Props> = ({ children, title, description }) => {
   return (
     <Card className="my-4">
-      <CardHeader className="bg-secondary">
-        <CardTitle className="text-yellow-700 dark:text-yellow-400">{title}</CardTitle>
-        {description ? <CardDescription>{description}</CardDescription> : null}
-      </CardHeader>
+      {title
+        ? (
+            <CardHeader className="bg-secondary">
+              <CardTitle className="text-yellow-700 dark:text-yellow-400">{title}</CardTitle>
+              {description ? <CardDescription>{description}</CardDescription> : null}
+            </CardHeader>
+          )
+        : null}
       {children}
     </Card>
   );

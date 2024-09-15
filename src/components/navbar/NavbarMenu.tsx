@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import { usePantipCategory } from '@/hooks/usePantipCategory';
 
 import PantipCard from '../common/card';
+import PantipLink from '../common/pantip-link';
 import { Image } from '../ui/image';
 
 export default function Component() {
@@ -50,7 +51,7 @@ export default function Component() {
 
   return isFetch && categories.length
     ? (
-        <PantipCard title="เลือกหัวข้อ">
+        <PantipCard>
           <div className="relative mt-4">
             <div
               ref={scrollRef}
@@ -58,12 +59,14 @@ export default function Component() {
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
               {categories.map((category: any) => (
-                <div key={category.id} className="flex w-20 flex-col items-center md:w-24">
-                  <div className="mb-2 rounded-lg border border-secondary p-2 md:p-2">
-                    <Image alt={category.name} src={category.room_icon_url} width={50} height={50} />
+                <PantipLink key={category.id} href={`/forum/${category.slug}`}>
+                  <div className="flex w-20 flex-col items-center md:w-24">
+                    <div className="mb-2 rounded-lg border border-secondary bg-[#373258] p-2 md:p-2">
+                      <Image alt={category.name} src={category.room_icon_url} width={50} height={50} />
+                    </div>
+                    <span className="text-center text-xs text-primary md:text-sm">{category.name}</span>
                   </div>
-                  <span className="text-center text-xs text-primary md:text-sm">{category.name}</span>
-                </div>
+                </PantipLink>
               ))}
             </div>
             <button
